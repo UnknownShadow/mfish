@@ -1,0 +1,125 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+	    http://www.springframework.org/schema/task
+	    http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache-4.1.xsd">
+
+
+    <!-- 负责调用controller层,扫描当前路径中的类,发现在类中使用@Controller注解,类似继承HttpServlet/ActionSupport,可添加多个controller
+    <context:component-scan/> 扫描指定的包中的类上的注解
+    注意：此时的包是基础包路径 package com.li.emp.controller;
+    -->
+    <context:component-scan base-package="com.mfish.config"/>
+    <context:component-scan base-package="com.mfish.controller"/>
+    <context:component-scan base-package="com.mfish.dao"/>
+
+
+    <!--加载properties文件-->
+    <context:property-placeholder location="classpath:application.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:freemarker.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true"/>
+
+
+    <!--swagger配置-->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <mvc:resources mapping="/bs/**" location="/bs/"/>
+
+
+    <!--开启这个配置，spring才能识别@Scheduled注解   -->
+    <context:component-scan base-package="com.mfish.mytask"/>
+    <task:executor id="executor" pool-size="5"/>
+    <task:scheduler id="scheduler" pool-size="10"/>
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+
+
+    <!--SpringMVC上传文件的配置，，必须配置，-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize" value="54000000"></property>
+    </bean>
+
+
+    <!--jsp页面多个目录视图配置-->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀,确定当前访问的页面路径地址 -->
+        <property name="prefix">
+            <value>/WEB-INF/jsp/</value>
+        </property>
+        <!-- 后缀,确定要访问的文件类型 -->
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀,确定当前访问的页面路径地址 -->
+        <property name="prefix">
+            <value>/WEB-INF/jsp/customer-service/</value>
+        </property>
+        <!-- 后缀,确定要访问的文件类型 -->
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    <!--jsp页面多个目录视图配置-->
+
+
+    <!-- 配置freeMarker视图解析器 -->
+    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true"/>
+        <property name="suffix" value=".ftl"/>
+        <property name="order" value="0"/>
+    </bean>
+    <!-- 配置freeMarker的模板路径 -->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+            <value>/WEB-INF/ftl/</value>
+        </property>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape"/>
+            </map>
+        </property>
+        <property name="defaultEncoding">
+            <value>utf-8</value>
+        </property>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">${template_update_delay}</prop>
+                <prop key="tag_syntax">${tag_syntax}</prop><!-- 设置标签类型 两种：[] 和 <> 。[] 这种标记解析要快些 -->
+                <prop key="default_encoding">${default_encoding}</prop>
+                <prop key="output_encoding">${output_encoding}</prop>
+                <prop key="locale">${locale}</prop>
+                <prop key="date_format">${date_format}</prop>
+                <prop key="time_format">${time_format}</prop>
+                <prop key="datetime_format">${datetime_format}</prop>
+                <prop key="number_format">${number_format}</prop><!-- 设置数字格式 以免出现 000.00 -->
+                <prop key="classic_compatible">${classic_compatible}
+                </prop><!-- 可以满足一般需要。默认情况变量为null则替换为空字符串，如果需要自定义，写上${empty!"EmptyValue of fbysss"}的形式即可  -->
+                <prop key="template_exception_handler">${template_exception_handler}
+                </prop><!-- ignore,debug,html_debug,rethrow -->
+            </props>
+        </property>
+    </bean>
+
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+</beans>
+
+
+

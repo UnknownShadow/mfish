@@ -1,0 +1,279 @@
+[2018-05-18 16:04:32] [com.alibaba.dubbo.common.logger.LoggerFactory] [INFO] - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[2018-05-18 16:04:32] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+public void destroy() {throw new UnsupportedOperationException("method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort() {throw new UnsupportedOperationException("method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 16:04:32] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc.cluster;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0) throws com.alibaba.dubbo.rpc.cluster.Directory {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString() + ") use keys([cluster])");
+com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 16:04:32] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 16:04:32] [com.alibaba.druid.pool.DruidAbstractDataSource] [ERROR] - maxIdle is deprecated
+[2018-05-18 16:04:33] [com.alibaba.druid.pool.DruidDataSource] [INFO] - {dataSource-1} inited
+[2018-05-18 16:04:33] [org.apache.ibatis.logging.LogFactory] [DEBUG] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[2018-05-18 16:04:34] [net.sf.ehcache.config.ConfigurationFactory] [DEBUG] - Configuring ehcache from InputStream
+[2018-05-18 16:04:34] [net.sf.ehcache.config.BeanHandler] [DEBUG] - Ignoring ehcache attribute xmlns:xsi
+[2018-05-18 16:04:34] [net.sf.ehcache.config.BeanHandler] [DEBUG] - Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+[2018-05-18 16:04:34] [net.sf.ehcache.util.PropertyUtil] [DEBUG] - propertiesString is null.
+[2018-05-18 16:04:34] [net.sf.ehcache.CacheManager] [DEBUG] - No disk store path defined. Skipping disk store path conflict test.
+[2018-05-18 16:04:34] [net.sf.ehcache.config.ConfigurationHelper] [DEBUG] - No CacheManagerEventListenerFactory class specified. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.Cache] [DEBUG] - No BootstrapCacheLoaderFactory class specified. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.Cache] [DEBUG] - CacheWriter factory not configured. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.config.ConfigurationHelper] [DEBUG] - No CacheExceptionHandlerFactory class specified. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.Cache] [DEBUG] - No BootstrapCacheLoaderFactory class specified. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.Cache] [DEBUG] - CacheWriter factory not configured. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.config.ConfigurationHelper] [DEBUG] - No CacheExceptionHandlerFactory class specified. Skipping...
+[2018-05-18 16:04:35] [net.sf.ehcache.Cache] [DEBUG] - Initialised cache: myCache
+[2018-05-18 16:04:35] [net.sf.ehcache.config.ConfigurationHelper] [DEBUG] - CacheDecoratorFactory not configured. Skipping for 'myCache'.
+[2018-05-18 16:04:35] [net.sf.ehcache.config.ConfigurationHelper] [DEBUG] - CacheDecoratorFactory not configured for defaultCache. Skipping for 'myCache'.
+[2018-05-18 16:04:36] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Context refreshed
+[2018-05-18 16:04:36] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Found 1 custom documentation plugin(s)
+[2018-05-18 16:04:36] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [INFO] - Scanning for api listing references
+[2018-05-18 17:30:40] [com.alibaba.dubbo.common.logger.LoggerFactory] [INFO] - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[2018-05-18 17:30:40] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+public void destroy() {throw new UnsupportedOperationException("method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort() {throw new UnsupportedOperationException("method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:30:41] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc.cluster;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0) throws com.alibaba.dubbo.rpc.cluster.Directory {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString() + ") use keys([cluster])");
+com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:30:41] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:30:41] [com.alibaba.druid.pool.DruidAbstractDataSource] [ERROR] - maxIdle is deprecated
+[2018-05-18 17:30:41] [com.alibaba.druid.pool.DruidDataSource] [INFO] - {dataSource-1} inited
+[2018-05-18 17:30:41] [org.apache.ibatis.logging.LogFactory] [DEBUG] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[2018-05-18 17:30:42] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Context refreshed
+[2018-05-18 17:30:42] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Found 1 custom documentation plugin(s)
+[2018-05-18 17:30:43] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [INFO] - Scanning for api listing references
+[2018-05-18 17:38:14] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：null
+[2018-05-18 17:38:20] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：null
+[2018-05-18 17:39:09] [com.alibaba.dubbo.common.logger.LoggerFactory] [INFO] - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[2018-05-18 17:39:09] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+public void destroy() {throw new UnsupportedOperationException("method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort() {throw new UnsupportedOperationException("method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:09] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc.cluster;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0) throws com.alibaba.dubbo.rpc.cluster.Directory {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString() + ") use keys([cluster])");
+com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:09] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:09] [com.alibaba.druid.pool.DruidAbstractDataSource] [ERROR] - maxIdle is deprecated
+[2018-05-18 17:39:10] [com.alibaba.druid.pool.DruidDataSource] [INFO] - {dataSource-1} inited
+[2018-05-18 17:39:10] [org.apache.ibatis.logging.LogFactory] [DEBUG] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[2018-05-18 17:39:11] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Context refreshed
+[2018-05-18 17:39:11] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Found 1 custom documentation plugin(s)
+[2018-05-18 17:39:11] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [INFO] - Scanning for api listing references
+[2018-05-18 17:39:11] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：null
+[2018-05-18 17:39:16] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：null
+[2018-05-18 17:39:37] [com.alibaba.dubbo.common.logger.LoggerFactory] [INFO] - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[2018-05-18 17:39:37] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+public void destroy() {throw new UnsupportedOperationException("method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort() {throw new UnsupportedOperationException("method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:38] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc.cluster;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0) throws com.alibaba.dubbo.rpc.cluster.Directory {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString() + ") use keys([cluster])");
+com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:38] [com.alibaba.dubbo.common.extension.ExtensionLoader] [DEBUG] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2018-05-18 17:39:38] [com.alibaba.druid.pool.DruidAbstractDataSource] [ERROR] - maxIdle is deprecated
+[2018-05-18 17:39:38] [com.alibaba.druid.pool.DruidDataSource] [INFO] - {dataSource-1} inited
+[2018-05-18 17:39:38] [org.apache.ibatis.logging.LogFactory] [DEBUG] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[2018-05-18 17:39:39] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Context refreshed
+[2018-05-18 17:39:39] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [INFO] - Found 1 custom documentation plugin(s)
+[2018-05-18 17:39:39] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [INFO] - Scanning for api listing references
+[2018-05-18 17:39:43] [com.mfish.controller.MainController] [INFO] - redis中没有数据！
+[2018-05-18 17:39:48] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:05] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:06] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:06] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:06] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:07] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
+[2018-05-18 17:41:07] [com.mfish.controller.MainController] [INFO] - 从redis中取得ID值为：10010
