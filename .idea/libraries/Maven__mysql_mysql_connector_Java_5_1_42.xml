@@ -109,6 +109,8 @@
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
